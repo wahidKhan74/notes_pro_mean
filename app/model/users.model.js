@@ -12,7 +12,10 @@ var userSchema = mongoose.Schema({
         pincode:Number
     },
     gender:String,
-    hobbies:[String]
+    hobbies:[String],
+    createAt: Date,
+    modifiedAt: Date,
+    active:Boolean
 
 });
 mongoose.model('User',userSchema,'users.accounts')

@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const CONFIG = require('../config');
+require('../model/users.model');
+
 mongoose.connect(CONFIG.DBURL,CONFIG.DBCONFIG);
 
 
