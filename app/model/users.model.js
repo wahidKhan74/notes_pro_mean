@@ -1,21 +1,50 @@
 var mongoose = require('mongoose');
-var userSchema = mongoose.Schema({
+
+var addressSchema = mongoose.Schema({
+    flatNo:{
+        type:Number
+    },
+    street:String,
+    landMark:String,
+    pincode:Number
+});
+var hobbiesSchema = mongoose.Schema({
     name:String,
-    email:String,
+    spendHours:Number,
+    expertise:String,
+    references:{
+        name:String,
+        url:String
+    }
+});
+var userSchema = mongoose.Schema({
+    name:{
+        type:String,
+        required:true
+    },
+    email:{
+        type:String,
+        required:true,
+        unique:true
+    },
     age:Number,
     phoneNumber:Number,
     password:String,
-    addres:{
-        flatNo:Number,
-        street:String,
-        landMark:String,
-        pincode:Number
+    addres:addressSchema,
+    gender:{
+        type:String,
+        'default':'male'
     },
-    gender:String,
-    hobbies:[String],
-    createAt: Date,
-    modifiedAt: Date,
+    hobbies:[hobbiesSchema],
+    createAt: {
+        type:Date,
+        'default':Date.now
+    },
+    modifiedAt: {
+        type:Date,
+        'default':Date.now
+    },
     active:Boolean
 
 });
-mongoose.model('User',userSchema,'users.accounts')
+mongoose.model('User',userSchema,'users.acc')
